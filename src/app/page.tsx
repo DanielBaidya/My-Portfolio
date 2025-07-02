@@ -1,103 +1,145 @@
 import Image from "next/image";
+import SkillCard from "../components/SkillCard";
+import ExpCard from "../components/ExpCard";
+import CertificationCard from "../components/Certification";
 
-export default function Home() {
+// Experience data for the Work Experience section
+const experiences = [
+  {
+    company: "Web Royale Pvt Ltd",
+    role: "Web Consultant",
+    period: "Jan - Sept (2024)",
+    description:
+      "Improved website rankings and traffic through keyword research, on-page SEO, and link-building strategies.",
+    AccquiredSkill: 9,
+  },
+  {
+    company: "Monal Tech Pvt Ltd",
+    role: "Frontend Developer (Internship)",
+    period: "Nov - Feb (2025)",
+    description:
+      "Developed modern web apps with React and Typescript. Built multiple practice projects aswell.",
+    AccquiredSkill: 8,
+  },
+  {
+    company: "Ek ra Sunya Inc",
+    role: "Next Js Developer",
+    period: "Jun - (Currently working)",
+    description: "Building modern web apps with React,Next.js and TypeScript.",
+    AccquiredSkill: 8,
+  },
+];
+
+// Skills data for the Skills section
+const skills = [
+  { imgSrc: "/Js.png", name: "JavaScript" },
+  { imgSrc: "/java.webp", name: "Java" },
+  { imgSrc: "/next.webp", name: "Next Js" },
+  { imgSrc: "/react.webp", name: "React" },
+  { imgSrc: "/ts.webp", name: "Typescript" },
+];
+const certifications = [
+  {
+    title: "Web Development Course Completed",
+    image: "/coursecertificate.png", // Place this image in your public folder
+  },
+  {
+    title: "Front-End Developer Internship Certificate",
+    image: "/certificate.png", // Place this image in your public folder
+  },
+];
+
+const Home = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+    // Main container with full screen height and background gradient
+    <main className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-red-900 flex flex-col items-center justify-center">
+      {/* ===================== Profile (Hero) Section ===================== */}
+      <section className="flex flex-col md:flex-row items-center justify-between gap-20 w-full max-w-7xl bg-white/10 rounded-3xl shadow-2xl p-10 mt-10 mb-16 border border-red-700 backdrop-blur">
+        {/* Left: Description */}
+        <div className="flex-1 flex flex-col items-start">
+          {/* Name */}
+          <h1 className="text-5xl font-extrabold mb-4 text-white drop-shadow-lg animate-pulse">
+            Hi I'm,{" "}
+            <span className="text-red-400 font-semibold">Daniel Baidya.</span>
+          </h1>
+          {/* Summary */}
+          <p className="mb-6 text-lg text-gray-200">
+            A passionate developer focused on building functional and beautiful
+            web applications with{" "}
+            <span className="text-red-400 font-semibold">Next.js</span> and{" "}
+            <span className="text-red-400 font-semibold">TypeScript</span>. I
+            write code like poetry (with fewer typos), chase performance like it
+            owes me money, and treat every deployment like a boss battle.
+          </p>
+          {/* Download CV link button */}
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/cv.pdf"
+            download
+            className="bg-red-700/80 text-white px-6 py-2 rounded-full text-base font-medium shadow hover:bg-red-400 cursor-pointer transition-colors"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            Download CV
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        {/* Right: Profile Image */}
+        <div className="flex-1 flex justify-center  md:justify-end">
+          <div className="rounded-lg overflow-hidden border-2 border-red-700 shadow-xl w-100 h-100 flex items-center justify-center bg-white/20">
+            {/* Profile photo using Next.js Image optimization */}
+            <Image
+              src="/me.JPG"
+              alt="Daniel's Photo"
+              width={220}
+              height={220}
+              className="object-cover w-full h-full"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+      {/* ===================== Skills Section ===================== */}
+      <section className="w-full max-w-5xl mb-16">
+        {/* Section heading */}
+        <h2 className="text-3xl font-bold mb-8 text-center text-red-400 tracking-wide drop-shadow">
+          Skills
+        </h2>
+        {/* Skill cards displayed side by side */}
+        <div className="flex flex-wrap justify-center gap-10">
+          {skills.map((skill) => (
+            // Each SkillCard receives image and name as props
+            <SkillCard
+              key={skill.name}
+              imgSrc={skill.imgSrc}
+              name={skill.name}
+            />
+          ))}
+        </div>
+      </section>
+      {/* ===================== Work Experience Section ===================== */}
+      <section className="w-full max-w-screen mb-16">
+        {/* Section heading */}
+        <h2 className="text-3xl font-bold mb-8 text-center text-red-400 tracking-wide drop-shadow">
+          Work Experience
+        </h2>
+        {/* Experience cards displayed side by side */}
+        <div className="flex flex-wrap justify-center gap-10">
+          {experiences.map((exp) => (
+            // Each ExpCard receives an experience object as prop
+            <ExpCard key={exp.company + exp.role} exp={exp} />
+          ))}
+        </div>
+      </section>
+      {/* ==================Certification Section========================= */}
+      <section className="w-full max-w-5xl mb-16">
+        <h2 className="text-3xl font-bold mb-8 text-center text-red-400 tracking-wide drop-shadow">
+          Certifications
+        </h2>
+        <div className="flex flex-wrap justify-center gap-10">
+          {certifications.map((cert) => (
+            <CertificationCard key={cert.title} {...cert} />
+          ))}
+        </div>
+      </section>
+    </main>
   );
-}
+};
+
+export default Home;
