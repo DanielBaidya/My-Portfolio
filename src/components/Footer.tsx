@@ -4,7 +4,7 @@ const Footer = () => (
   <footer className="w-full bg-gradient-to-r from-black via-gray-900 to-red-900 border-t border-red-700 shadow-lg py-8 mt-12">
     <div className="max-w-5xl mx-auto flex flex-col items-center space-y-2">
       <p className="text-white font-semibold text-lg">
-        © 2025 Daniel's Website
+        © 2025 Daniel&apos;s Website
       </p>
       <p className="text-gray-300">
         Contact: 9863861483 | dbaidya.me@gmail.com

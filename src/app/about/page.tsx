@@ -7,11 +7,11 @@ const About = () => {
       <section className="w-full max-w-6xl bg-white/10 rounded-3xl shadow-2xl p-10 mb-16 border border-red-700 backdrop-blur">
         <h1 className="text-4xl font-bold text-red-400 mb-6">About Me</h1>
         <p className="text-xl text-gray-200 mb-10">
-          Hi, I'm Daniel Baidya, a passionate developer focused on building
-          functional and beautiful web applications. I completed my bachelor's
-          degree in Information Management from KCMIT. I have always been
-          intrested in coding and developement. Right now I am still learning
-          and working on NextJs and Typescript.
+          Hi, I&apos;m Daniel Baidya, a passionate developer focused on building
+          functional and beautiful web applications. I completed my
+          bachelor&apos;s degree in Information Management from KCMIT. I have
+          always been intrested in coding and developement. Right now I am still
+          learning and working on NextJs and Typescript.
         </p>
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-center">
           <Image
@@ -63,7 +63,7 @@ const About = () => {
           <li>
             <span className="font-semibold text-white">2024:</span> Joined Web
             Royale Pvt Ltd as a Web Consultant. And completed traineeship as a
-            frontend develoepr on Monal Tech Pvt Ltd.
+            frontend developer on Monal Tech Pvt Ltd.
           </li>
           <li>
             <span className="font-semibold text-white">2025:</span> Working at
@@ -89,8 +89,8 @@ const About = () => {
           Hobbies & Interests
         </h2>
         <p className="text-gray-200 text-xl">
-          When I'm not coding, I enjoy hanging out with my cousin brothers. I
-          love going to chill places to hangout and play games. I also enjoy
+          When I&apos;m not coding, I enjoy hanging out with my cousin brothers.
+          I love going to chill places to hangout and play games. I also enjoy
           bike rides and spending rest of the time watching movie and with
           family.
         </p>
