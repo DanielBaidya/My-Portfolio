@@ -58,9 +58,9 @@ const Home = () => {
       {/* ===================== Profile (Hero) Section ===================== */}
       <section className="flex flex-col md:flex-row items-center justify-between gap-20 w-full max-w-7xl bg-white/10 rounded-3xl shadow-2xl p-10 mt-10 mb-16 border border-red-700 backdrop-blur">
         {/* Left: Description */}
-        <div className="flex-1 flex flex-col items-start">
+        <div className="overflow-hidden px-4 text-center">
           {/* Name */}
-          <h1 className="text-5xl font-extrabold mb-4 text-white drop-shadow-lg typing">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-white typing  mb-10">
             Hi I&apos;m,{" "}
             <span className="text-red-400 font-semibold">Daniel Baidya.</span>
           </h1>
@@ -77,7 +77,7 @@ const Home = () => {
           <a
             href="/cv.pdf"
             download
-            className="bg-red-700/80 text-white px-6 py-2 rounded-full text-base font-medium shadow hover:bg-red-400 cursor-pointer transition-colors fade-in-left"
+            className="bg-red-700/80 text-white px-6 py-2 rounded-full text-base font-medium shadow hover:bg-red-400 cursor-pointer transition-colors fade-in-left mt-6"
           >
             Download CV
           </a>
@@ -104,7 +104,7 @@ const Home = () => {
           Skills
         </h2>
         {/* Skill cards displayed side by side */}
-        <div className="flex flex-wrap justify-center gap-10">
+        <div className="flex flex-wrap justify-center gap-10 overflow-hidden px-4">
           {skills.map((skill, index) => (
             <div
               key={skill.name}
