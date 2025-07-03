@@ -38,6 +38,8 @@ const skills = [
   { imgSrc: "/react.webp", name: "React" },
   { imgSrc: "/ts.webp", name: "Typescript" },
 ];
+
+//Certification Section data
 const certifications = [
   {
     title: "Web Development Course Completed",
@@ -58,7 +60,7 @@ const Home = () => {
         {/* Left: Description */}
         <div className="flex-1 flex flex-col items-start">
           {/* Name */}
-          <h1 className="text-5xl font-extrabold mb-4 text-white drop-shadow-lg animate-pulse">
+          <h1 className="text-5xl font-extrabold mb-4 text-white drop-shadow-lg typing">
             Hi I&apos;m,{" "}
             <span className="text-red-400 font-semibold">Daniel Baidya.</span>
           </h1>
@@ -75,7 +77,7 @@ const Home = () => {
           <a
             href="/cv.pdf"
             download
-            className="bg-red-700/80 text-white px-6 py-2 rounded-full text-base font-medium shadow hover:bg-red-400 cursor-pointer transition-colors"
+            className="bg-red-700/80 text-white px-6 py-2 rounded-full text-base font-medium shadow hover:bg-red-400 cursor-pointer transition-colors fade-in-left"
           >
             Download CV
           </a>
@@ -103,13 +105,13 @@ const Home = () => {
         </h2>
         {/* Skill cards displayed side by side */}
         <div className="flex flex-wrap justify-center gap-10">
-          {skills.map((skill) => (
-            // Each SkillCard receives image and name as props
-            <SkillCard
+          {skills.map((skill, index) => (
+            <div
               key={skill.name}
-              imgSrc={skill.imgSrc}
-              name={skill.name}
-            />
+              className={`fade-in-left fade-delay-${index + 1}`}
+            >
+              <SkillCard imgSrc={skill.imgSrc} name={skill.name} />
+            </div>
           ))}
         </div>
       </section>
