@@ -59,7 +59,7 @@ const Home = () => {
         <div className="flex-1 flex flex-col items-start">
           {/* Name */}
           <h1 className="text-5xl font-extrabold mb-4 text-white drop-shadow-lg animate-pulse">
-            Hi I'm,{" "}
+            Hi I&apos;m,{" "}
             <span className="text-red-400 font-semibold">Daniel Baidya.</span>
           </h1>
           {/* Summary */}
