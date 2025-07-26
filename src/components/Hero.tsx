@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
       id="home"
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 px-4 relative "
     >
-      <div className="max-w-6xl mx-auto w-full mt-12 md:mt-0">
+      <div className="max-w-6xl mx-auto w-full mt-24 md:mt-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="text-center lg:text-left order-2 lg:order-1">
