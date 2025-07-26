@@ -1,93 +1,128 @@
-"use client"; // Enables client-side rendering in Next.js
+"use client";
 
-import Link from "next/link"; // For internal navigation
-import { useState } from "react"; // To manage state (menu toggle)
-import { FaBars, FaTimes } from "react-icons/fa"; // Hamburger and close icons
+import React, { useState } from "react";
+import { Menu, X, MessageCircle } from "lucide-react";
 
-const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false); // State to control mobile menu
+const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
+    }
+  };
 
   return (
-    <header className="w-full bg-gradient-to-r from-black via-gray-900 to-red-900 border-b border-red-700 shadow-lg">
-      <nav className="max-w-5xl mx-auto flex items-center justify-between py-5 px-6 relative">
-        {/* Logo or Brand Name */}
-        <div className="text-2xl font-extrabold text-white tracking-widest drop-shadow">
-          Daniel
-        </div>
+    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[70%] max-w-4xl">
+      <nav className="bg-white text-black backdrop-blur-lg border border-neutral-200  rounded-2xl md:rounded-full px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="text-2xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+            Daniel
+          </div>
 
-        {/* Desktop Navigation Menu (visible on md and above) */}
-        <div className="space-x-8 hidden md:flex">
-          <Link
-            href="/"
-            className="text-white hover:text-red-400 font-semibold transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className="text-white hover:text-red-400 font-semibold transition-colors"
-          >
-            About me
-          </Link>
-          <Link
-            href="/contact"
-            className="text-white hover:text-red-400 font-semibold transition-colors"
-          >
-            Contact
-          </Link>
-          <a
-            href="https://wa.me/9863861493"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-green-600 text-white px-6 py-2 rounded-full text-base font-medium shadow hover:bg-green-400 cursor-pointer transition-colors"
-          >
-            Whatsapp 📞
-          </a>
-        </div>
-
-        {/* Hamburger Menu Icon (visible on small screens) */}
-        <button
-          className="md:hidden text-2xl text-white"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <FaTimes /> : <FaBars />}{" "}
-          {/* Show X if open, bars if closed */}
-        </button>
-
-        {/* Mobile Navigation Menu (visible when menuOpen is true) */}
-        {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-black/95 flex flex-col items-center gap-6 py-8 z-50 md:hidden">
-            <Link
-              href="/"
-              className="text-white text-xl"
-              onClick={() => setMenuOpen(false)}
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => scrollToSection("home")}
+              className="text-black hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
+              aria-label="Navigate to home section"
             >
               Home
-            </Link>
-            <Link
-              href="/about"
-              className="text-white text-xl"
-              onClick={() => setMenuOpen(false)}
+            </button>
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="text-black hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
+              aria-label="Navigate to projects section"
             >
-              About me
-            </Link>
-            <Link
-              href="/contact"
-              className="text-white text-xl"
-              onClick={() => setMenuOpen(false)}
+              Projects
+            </button>
+            <button
+              onClick={() => scrollToSection("skills")}
+              className="text-black hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
+              aria-label="Navigate to skills section"
+            >
+              Skills
+            </button>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="text-black hover:text-red-400 transition-colors duration-300 font-medium cursor-pointer"
+              aria-label="Navigate to contact section"
             >
               Contact
-            </Link>
+            </button>
             <a
-              href="https://wa.me/9863861493"
+              href="https://wa.me/9863861483"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-600 text-white px-6 py-2 rounded-full text-base font-medium shadow hover:bg-green-400 cursor-pointer transition-colors"
-              onClick={() => setMenuOpen(false)}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-all duration-300 transform hover:scale-105"
+              aria-label="Contact via WhatsApp"
             >
-              Whatsapp 📞
+              <MessageCircle size={18} />
+              <span>WhatsApp</span>
             </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden text-black hover:text-red-400 transition-colors duration-300"
+            aria-label="Toggle mobile menu"
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden mt-4 pt-4 border-t border-red-900/20">
+            <div className="flex flex-col space-y-4">
+              <button
+                onClick={() => scrollToSection("home")}
+                className="text-black hover:text-red-400 transition-colors duration-300 font-medium text-left"
+                aria-label="Navigate to home section"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="text-black hover:text-red-400 transition-colors duration-300 font-medium text-left"
+                aria-label="Navigate to projects section"
+              >
+                Projects
+              </button>
+              <button
+                onClick={() => scrollToSection("skills")}
+                className="text-black hover:text-red-400 transition-colors duration-300 font-medium text-left"
+                aria-label="Navigate to skills section"
+              >
+                Skills
+              </button>
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="text-black hover:text-red-400 transition-colors duration-300 font-medium text-left"
+                aria-label="Navigate to contact section"
+              >
+                Contact
+              </button>
+              <a
+                href="https://wa.me/9863861483"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-all duration-300 w-fit"
+                aria-label="Contact via WhatsApp"
+              >
+                <MessageCircle size={18} />
+                <span>WhatsApp</span>
+              </a>
+            </div>
           </div>
         )}
       </nav>
@@ -95,4 +130,4 @@ const Header = () => {
   );
 };
 
-export default Header; // Export the Header component
+export default Header;
